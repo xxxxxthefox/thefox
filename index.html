@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>thefox</title>
+    <style>
+      @font-face {
+        font-family: 'EnglishFont';
+        src: url('English.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'ArabFont';
+        src: url('Arab.ttf') format('truetype');
+      }
+    </style>
+  </head>
+    
+  <body>
+<head>
+<meta charset="UTF-8">
+<title>thefox</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: url("2006Sky.png") no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'ArabFont', sans-serif;
+  color: #e6e6e6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: url("https://u.cubeupload.com/zmonochrome/8eecursor.png"), auto;
+  position: relative;
+}
+
+#bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 0;
+}
+
+.window {
+  background: rgba(15,15,15,0.45);
+  backdrop-filter: blur(12px) brightness(1.05);
+  -webkit-backdrop-filter: blur(12px) brightness(1.05);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.7);
+  font-size: 13px;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  color: #f2f2f2;
+}
+
+.profile-window {
+  width: 90%;
+  max-width: 285px;
+  margin: 20px auto;
+}
+.profile-header {
+  background: rgba(35,35,35,0.6);
+  height: 26px; display: flex; align-items: center; justify-content: center;
+  position: relative; cursor: grab;
+}
+.profile-header::before {
+  content: ""; width: 45px; height: 2px;
+  background: #ccc;
+  border-radius: 10px;
+  position: absolute; top: 12px;
+}
+.profile-content { padding: 16px; }
+.username {
+  font-size: 26px; font-family: 'EnglishFont', sans-serif; margin-bottom: 12px; text-align: center;
+  background: linear-gradient(to right, #fff, #bbb, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+}
+.profile-main { display: flex; align-items: flex-start; gap: 12px; }
+
+.icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.25);
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) contrast(120%) brightness(90%);
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.profile-info { font-size: 13px; line-height: 1.8; color: #ddd; }
+.profile-info a { color: #f2f2f2; text-decoration: none; font-weight: 600; }
+.profile-info a:hover { text-decoration: underline; }
+.en-text { font-family: 'EnglishFont', sans-serif; unicode-bidi: embed; direction: ltr; display: inline-block; }
+</style>
+</head>
+<body>
+
+<div id="bg-overlay"></div>
+
+<div class="window profile-window" id="profileWindow">
+  <div class="profile-header" id="profileHeader"></div>
+  <div class="profile-content">
+    <div class="username">thefox</div>
+    <div class="profile-main">
+      <div class="icon" style="background-image:url('thefox.png');"></div>
+      <div class="profile-info">
+        أهلاً، أنا وليد.<br>
+        <span class="en-text">@xxxxxthefox</span><br>
+        شخص عادي.<br>
+        <span>🞮 مشغول بنفسه</span><br>
+        <span>غير متصل.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function makeDraggable(windowId, headerId){
+  const dragElement = document.getElementById(windowId);
+  const dragHandle = document.getElementById(headerId);
+  let offsetX=0, offsetY=0, isDown=false;
+
+  dragHandle.addEventListener("mousedown", e=>{
+    isDown=true; offsetX=e.clientX-dragElement.offsetLeft; offsetY=e.clientY-dragElement.offsetTop; dragHandle.style.cursor="grabbing";
+  });
+  document.addEventListener("mouseup", ()=>{ isDown=false; dragHandle.style.cursor="grab"; });
+  document.addEventListener("mousemove", e=>{
+    if(!isDown) return;
+    dragElement.style.left=(e.clientX-offsetX)+"px";
+    dragElement.style.top=(e.clientY-offsetY)+"px";
+  });
+}
+makeDraggable("profileWindow","profileHeader");
+</script>
+
+</body>
+</html>
+    
+  </body>
+  
+</html>
